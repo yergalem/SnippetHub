@@ -5,6 +5,8 @@
  */
 package com.snippethub.controller;
 
+import org.springframework.stereotype.Controller;
+
 /**
  *
  * @author tekeste
