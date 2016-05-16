@@ -1,4 +1,4 @@
-package com.snippethub01.model;
+package com.snippethub.model;
 
 
 /**
