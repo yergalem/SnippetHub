@@ -10,7 +10,7 @@
     <name>SnippetHub</name>
     <properties>
        
-            <spring.version>4.0.3.RELEASE</spring.version>
+            <springframework.version>4.0.3.RELEASE</springframework.version>
         
     </properties>
     <dependencies>
@@ -62,6 +62,7 @@
     </dependencies>
  
     <build>
+        <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
