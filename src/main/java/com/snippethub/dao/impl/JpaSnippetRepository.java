@@ -10,11 +10,13 @@ import com.snippethub.dao.SnippetRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author tareman
  */
+@Repository
 public class JpaSnippetRepository implements SnippetRepository{
     
     
