@@ -6,6 +6,7 @@
 package com.snippethub.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -13,5 +14,9 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class PageController {
-    
+    @RequestMapping("/")
+    public String home() {
+        System.out.println("fuckkk");
+        return "index";
+    }
 }
