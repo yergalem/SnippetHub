@@ -4,6 +4,8 @@
     Author     : tekeste
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@tag description="put the tag description here" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
@@ -17,7 +19,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${pageTitle}</title>
-        <link rel="stylesheet" href="resources/styles/main.css">
+        <link rel="stylesheet" href='<c:url value="/resources/styles/main.css"/>'>
     </head>
     <body>
         <div class="wrapper">
@@ -25,8 +27,8 @@
             <jsp:doBody/>
             <t:footer></t:footer>
         </div>
-        <script src="/resources/scripts/main.js"></script>
-        <script src="resources/scripts/vendor.js"></script>
+    <script src='<spring:url value="/resources/scripts/main.js"/>'></script>
+    <script src="resources/scripts/vendor.js"></script>
         <!--<script src="resources/scripts/prism.js"></script>-->
     </body>
 </html>

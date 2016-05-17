@@ -19,8 +19,18 @@
                             <div class="snippet-box">
                                 <div class="snippet-code">
                                     <pre>
-                                      <code class="language-css">
-                                          //code goes here
+                                      <code class="language-javascript">
+module.exports = leftpad;
+function leftpad (str, len, ch) {
+  str = String(str);
+  var i = -1;
+  if (!ch && ch !== 0) ch = ' ';
+  len = len - str.length;
+  while (++i < len) {
+    str = ch + str;
+  }
+  return str;
+}
                                       </code>
                                     </pre>
                                 </div>
