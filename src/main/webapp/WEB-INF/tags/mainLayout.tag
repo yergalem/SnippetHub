@@ -22,13 +22,15 @@
         <link rel="stylesheet" href='<c:url value="/resources/styles/main.css"/>'>
     </head>
     <body>
+        <t:modal></t:modal>
         <div class="wrapper">
             <t:header></t:header>
             <jsp:doBody/>
             <t:footer></t:footer>
         </div>
+    <script src='<spring:url value="/resources/scripts/vendor.js"/>'></script>
+    <script src='<spring:url value="/resources/scripts/plugins.js"/>'></script>
+    <script src='<spring:url value="/resources/scripts/select2.full.min.js"/>'></script>
     <script src='<spring:url value="/resources/scripts/main.js"/>'></script>
-    <script src="resources/scripts/vendor.js"></script>
-        <!--<script src="resources/scripts/prism.js"></script>-->
     </body>
 </html>
