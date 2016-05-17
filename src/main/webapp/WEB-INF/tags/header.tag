@@ -16,13 +16,9 @@
         </div>
         <nav class="main-nav">
           <ul class="list-inline">
-              <li>
-                  <a href='<c:url value="/"/>'>
-                          Home
-                  </a>
-              </li>
+              <li><a href='<c:url value="/"/>'>Home</a></li>
               <li><a href='<c:url value="/snippets"/>'>Snippets</a></li>
-            <li><a href="#">Tags</a></li>
+              <li><a href='<c:url value="/tags"/>'>Tags</a></li>
               <li><a href='<c:url value="/users"/>'>People</a></li>
           </ul>
         </nav>
