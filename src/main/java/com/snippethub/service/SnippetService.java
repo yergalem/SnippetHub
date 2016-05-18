@@ -21,4 +21,5 @@ public interface SnippetService {
     public List<Language> getAllLaungauges();
     public Snippet getSnippetByTitle(String title);
     public List<Snippet> search(String searchTerm);
+     public List<Snippet> getSnippetListByFirstName(String firstName);
 }

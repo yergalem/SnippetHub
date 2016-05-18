@@ -25,12 +25,12 @@ import org.springframework.stereotype.Repository;
 public class InMemorySnippetRepository implements SnippetRepository {
 
     public InMemorySnippetRepository() {
-        List<Tag> listOfTags = new ArrayList<>();
-        Tag tag1 = new Tag("javascript");
-        listOfTags.add(tag1);
-        Snippet sn1 = new Snippet("javascript", "Arrow functions", "x => x+1", "Increment x by 1", "public", listOfTags, "rahel");
-        listOfSnippet.add(sn1);
-    }
+//        List<Tag> listOfTags = new ArrayList<>();
+//        Tag tag1 = new Tag("javascript");
+//        listOfTags.add(tag1);
+//        Snippet sn1 = new Snippet("javascript", "Arrow functions", "x => x+1", "Increment x by 1", "public", listOfTags, "rahel");
+//        listOfSnippet.add(sn1);
+    }   
 
     private final List<Snippet> listOfSnippet = new ArrayList<>();
     @Override
@@ -64,5 +64,14 @@ public class InMemorySnippetRepository implements SnippetRepository {
         }
         return null;
     }
-
+     @Override
+    public List<Snippet> getSnippetListByFirstName(String firstName){
+        List<Snippet> userSnippetList=new ArrayList<>();
+        for (Snippet snippet : listOfSnippet) {
+            if (snippet.getOwner().equals(firstName)) {
+                userSnippetList.add(snippet);
+            }
+        }
+        return userSnippetList;
+    }
 }

@@ -64,5 +64,8 @@ public class SnippetServiceImpl implements SnippetService{
         searchResult.add(this.getSnippetByTitle(searchTerm));
         return searchResult;
     }
-    
+    @Override
+    public List<Snippet> getSnippetListByFirstName(String firstName) {
+        return snippetRepository.getSnippetListByFirstName(firstName);
+    }
 }

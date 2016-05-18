@@ -19,4 +19,5 @@ public interface SnippetRepository {
    // void initRepository();
 
     public Snippet getSnippetByTitle(String title);
+    public List<Snippet> getSnippetListByFirstName(String firstName);
 }

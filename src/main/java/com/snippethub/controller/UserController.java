@@ -3,6 +3,7 @@ package com.snippethub.controller;
 
 //import com.snippethub.service.UserService;
 import com.snippethub.model.User;
+import com.snippethub.service.SnippetService;
 import com.snippethub.service.UserService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -37,7 +38,7 @@ public class UserController {
     @RequestMapping(value="/users/{firstName}", method=RequestMethod.GET)
     public String getProfile(@PathVariable("firstName") String firstName, Model model) {
         model.addAttribute("singleUser", userService.getUserByFirstName(firstName));
-        model.addAttribute("userSnippets");
+        model.addAttribute("userSnippets",userService.getSnippetListByFirstName(firstName));
         return "user/show";
     }
     /**

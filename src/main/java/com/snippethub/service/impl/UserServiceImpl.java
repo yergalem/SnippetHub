@@ -1,6 +1,8 @@
 package com.snippethub.service.impl;
+import com.snippethub.model.Snippet;
 import com.snippethub.repository.UserRepository;
 import com.snippethub.model.User;
+import com.snippethub.service.SnippetService;
 import com.snippethub.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,7 @@ public class UserServiceImpl implements UserService {
     
     //JpaUserRepository userRepository;
     @Autowired UserRepository userRepository;    
-
+    @Autowired SnippetService snippetService;
     /*
     public UserServiceImpl() {
         userRepository = new JpaUserRepository();
@@ -66,6 +68,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByFirstName(String firstName) {
         return userRepository.getUserByFirstName(firstName);
+    }
+
+    @Override
+    public List<Snippet> getSnippetListByFirstName(String firstName) {
+        return snippetService.getSnippetListByFirstName(firstName);
     }
     
     

@@ -14,4 +14,6 @@ public interface UserService {
    public boolean authenticate(User user);
    public User getUserByFirstName(String firstName);
    public User getUserByEmail(String email); 
+
+    public Object getSnippetListByFirstName(String firstName);
 }
