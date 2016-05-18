@@ -13,7 +13,7 @@ public interface UserService {
    public boolean deleteUser(String userID);
    public boolean editUser(User user);
    public boolean authenticate(User user);
-
+   public User getUserByFirstName(String firstName);
     public User getUserByEmail(String email);
    
 }

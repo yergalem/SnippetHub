@@ -1,5 +1,6 @@
 package com.snippethub.model;
 
+import com.snippethub.model.util.Util;
 import java.io.Serializable;
 import java.util.*;
 import javax.persistence.Entity;
@@ -149,6 +150,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return super.toString(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getSlug() {
+        return Util.getSlug(this.firstName);
     }
 
 }

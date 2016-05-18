@@ -2,6 +2,7 @@
 package com.snippethub.repository.impl;
 
 import com.snippethub.model.User;
+import com.snippethub.model.util.Util;
 import com.snippethub.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +56,6 @@ public class InMemoryUserRepository implements UserRepository {
     public User getUser(String userID) {
         
         for (User user :  users.values() ) {
-            
             if(user.getUserID().equals(userID)) 
                 return user;
         }
@@ -87,5 +87,15 @@ public class InMemoryUserRepository implements UserRepository {
         }
         return null;
     }
+
+    @Override
+    public User getUserByFirstName(String firstName) {
+        for (User user :  users.values() ) {
+            if(user.getSlug().equals(Util.getSlug(firstName))) 
+                return user;
+            }
+        return null;
+    }
+    
     
 }
