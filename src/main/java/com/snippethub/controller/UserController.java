@@ -59,11 +59,11 @@ public class UserController {
     , HttpServletRequest request) {
         if(userService.authenticate(user)) {
             request.getSession().setAttribute("user", user);
-            redirectAttributes.addFlashAttribute("loginError", "");
+            redirectAttributes.addFlashAttribute("loginError", "yes");
             return "user/show";
         }
         else {
-          redirectAttributes.addFlashAttribute("loginError", "Wrong email or password");
+          redirectAttributes.addFlashAttribute("loginError", "no");
           return "redirect:/login";
         }
     }

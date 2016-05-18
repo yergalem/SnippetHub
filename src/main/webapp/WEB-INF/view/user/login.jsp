@@ -24,10 +24,10 @@
                                 <form:input path="email" class="form-control" placeholder="Email" />
                                 <form:input path="password" class="form-control" placeholder="Password" />
                                 <input type="submit" class="login btn" value="Login" />
-                            </form:form>
-                        <c:if test='${!loginError.equals("")}'>
+                        </form:form>
+                        <c:if test='${loginError.equals("no")}'>
                             <div class="alert alert-danger">
-                                ${loginError}
+                                Wrong email or password
                             </div>
                         </c:if>
                         </div>
