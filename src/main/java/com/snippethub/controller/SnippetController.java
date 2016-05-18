@@ -21,9 +21,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -84,6 +86,16 @@ public class SnippetController {
         Snippet newSnippet = new Snippet();
         model.addAttribute("newSnippet", newSnippet);
         return "snippet/edit";
+    }
+    
+    @RequestMapping(value="/search/{searchTerm}", method = RequestMethod.GET)
+    public String search(@PathVariable(value = "searchTerm") String searchTerm, Model model) {
+       List<Snippet> matchingSnippets = snippetSerrvice.search(searchTerm);
+        model.addAttribute("matchingSnippets",matchingSnippets );
+        if(matchingSnippets.isEmpty())
+            return "No snippets found";
+        else
+            return "snippet/searchResult";
     }
     
 }

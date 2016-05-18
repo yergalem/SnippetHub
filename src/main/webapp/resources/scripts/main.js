@@ -8,13 +8,31 @@ important:/\b(?:always_latch|always_comb|always_ff|always)\b ?@?/,number:/\B##?\
 
 var Search = {
     //wire up event listeners
+    keystrokeTimeout: "",
     init: function() {
             var searchBox = $(".search-box");
             this.bindEvents(searchBox)
-    }
+    },
     bindEvents: function(searchBox) {
-        
+        var that = this;
+        searchBox.on('keyup', function(){
+            that.keyupHandler(searchBox.val());
+        });
+    },
+    keyupHandler: function(searchTerm) {
+        var that = this;
+        window.clearTimeout(this.keystrokeTimeout);
+        this.keystrokeTimeout = window.setTimeout(function(){
+            that.search(searchTerm);
+        }, 350);
+    },
+    search: function(searchTerm) {
+        var url = "http://localhost:8080/SnippetHub/snippets/search/" + searchTerm;
+        $.get(url).success(function(res) {
+            console.log(res);
+        });
     }
 };
 (function(){
+    Search.init();
 })();

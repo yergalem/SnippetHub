@@ -5,17 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<t:mainLayout pageTitle="Welcome to SnippetHub">
-    <jsp:body>
-        <t:marketing></t:marketing>
-            <!-- End Marketing -->
-            <div class="snippets-container">
-                <div class="container">
-                    <div class="row snippets-row">
-                    <c:forEach var="snippet" items="${snippets}">
+                    <c:forEach var="snippet" items="${matchingSnippets}">
                         <div class="col-xs-12 col-sm-6">
                             <div class="snippet-box">
                                 <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
@@ -43,9 +34,3 @@
                             </div>
                         </div>
                     </c:forEach>
-                </div>
-            </div>
-        </div>
-        <!-- End Snippets Container -->
-    </jsp:body>
-</t:mainLayout>

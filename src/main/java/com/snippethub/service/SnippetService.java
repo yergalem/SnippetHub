@@ -15,10 +15,10 @@ import java.util.List;
  * @author tareman
  */
 public interface SnippetService {
-     public List<Snippet> getAllSnippets();
+    public List<Snippet> getAllSnippets();
     public Snippet getSnippetById(long SnippetID);
     public void addSnippet(Snippet snippet); 
     public List<Language> getAllLaungauges();
-
     public Snippet getSnippetByTitle(String title);
+    public List<Snippet> search(String searchTerm);
 }
