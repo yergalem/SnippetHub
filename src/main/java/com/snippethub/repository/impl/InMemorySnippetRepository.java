@@ -8,6 +8,7 @@ package com.snippethub.repository.impl;
 
 import com.snippethub.repository.SnippetRepository;
 import com.snippethub.model.Snippet;
+import com.snippethub.model.Tag;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class InMemorySnippetRepository implements SnippetRepository {
+
+    public InMemorySnippetRepository() {
+        List<Tag> listOfTags = new ArrayList<>();
+        Tag tag1 = new Tag("javascript");
+        listOfTags.add(tag1);
+        Snippet sn1 = new Snippet("javascript", "Arrow functions", "x => x+1", "Increment x by 1", "public", listOfTags);
+        listOfSnippet.add(sn1);
+    }
 
     private final List<Snippet> listOfSnippet = new ArrayList<>();
     @Override
@@ -43,6 +52,16 @@ public class InMemorySnippetRepository implements SnippetRepository {
     public void addSnippet(Snippet snippet){
 
         listOfSnippet.add(snippet);
+    }
+
+    @Override
+    public Snippet getSnippetByTitle(String title) {
+        for (Snippet snippet : listOfSnippet) {
+            if (snippet.getSlug().equals(Snippet.getSlug(title))) {
+                return snippet;
+            }
+        }
+        return null;
     }
 
 }

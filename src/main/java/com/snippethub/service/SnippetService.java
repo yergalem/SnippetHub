@@ -19,4 +19,6 @@ public interface SnippetService {
     public Snippet getSnippetById(long SnippetID);
     public void addSnippet(Snippet snippet); 
     public List<Language> getAllLaungauges();
+
+    public Snippet getSnippetByTitle(String title);
 }

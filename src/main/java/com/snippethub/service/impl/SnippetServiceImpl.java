@@ -52,5 +52,10 @@ public class SnippetServiceImpl implements SnippetService{
         languages.add(lang3);
         return languages;
     }
+
+    @Override
+    public Snippet getSnippetByTitle(String title) {
+        return snippetRepository.getSnippetByTitle(title);
+    }
     
 }

@@ -17,4 +17,6 @@ public interface SnippetRepository {
     Snippet getSnippetById(long snippetID);
     void addSnippet(Snippet snippet);
    // void initRepository();
+
+    public Snippet getSnippetByTitle(String title);
 }

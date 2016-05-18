@@ -15,30 +15,33 @@
             <div class="snippets-container">
                 <div class="container">
                     <div class="row">
-                        <c:forEach var="snippet" items="${snippets}">
-                            <div class="col-xs-12 col-sm-6">
-                                <a href="#">
-                                    <div class="snippet-box">
+                    <c:forEach var="snippet" items="${snippets}">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="snippet-box">
+                                <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
                                         <div class="snippet-code">
-                                    <pre>
-                                      <code class="language-${snippet.language}">
-${snippet.content}
-                                     </code>
-                                            </pre>
-                                        </div>
-                                        <div class="snippet-details">
-                                            <div class="snippet-title">
-                                                ${snippet.snippetTitle}
-                                            </div>
-                                            <div class="description">
-                                                ${snippet.snippetDescription}
-                                            </div>
-                                            <ul class="list-inline tags">
-                                                <li><a href="" class="tag">${snippet.tags}</a></li>
-                                            </ul>
-                                        </div>
+                                        <pre>
+<code class="language-${snippet.language}">${snippet.content}</code>
+                                        </pre>
                                     </div>
+                                </a>
+                                <div class="snippet-details">
+                                    <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
+                                            <div class="snippet-title">
+                                            ${snippet.snippetTitle}
+                                        </div>
+                                        <div class="description">
+                                            ${snippet.snippetDescription}
+                                        </div>
+                                    </a>
+                                    <ul class="list-inline tags">
+                                        <c:forEach var="tag" items="${snippet.tags}">
+                                            <li><a href="" class="tag">${tag.tagTitle}</a></li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
                             </div>
+                        </div>
                     </c:forEach>
                 </div>
             </div>

@@ -43,9 +43,9 @@ public class SnippetController {
         return "snippet/index";
     }
 
-    @RequestMapping("/{id}")
-    public String getSnippetById(@PathVariable("id") long snippetID, Model model) {
-        model.addAttribute("snippet", snippetSerrvice.getSnippetById(snippetID));
+    @RequestMapping(value="/{title}")
+    public String getSnippetByTitle(@PathVariable("title") String title, Model model) {
+        model.addAttribute("snippet", snippetSerrvice.getSnippetByTitle(title));
         return "snippet/show";
     }
     

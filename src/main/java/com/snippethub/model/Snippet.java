@@ -6,9 +6,13 @@
 package com.snippethub.model;
 
 import java.io.Serializable;
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +40,7 @@ public class Snippet implements Serializable {
     public Snippet() {
         this.tags = new ArrayList<>();
     }
+
     public Snippet(String snippetTitle, String snippetDescription, String snippetContent, Date createDate, Date modifiedDate, String snippetLanguage, String visiblity, List<Tag> tags) {
         this.snippetTitle = snippetTitle;
         this.snippetDescription = snippetDescription;
@@ -46,7 +51,16 @@ public class Snippet implements Serializable {
         this.visiblity = visiblity;
         this.tags = tags;
     }
-    
+
+    public Snippet(String snippetLanguage, String snippetTitle, String snippetContent, String snippetDescription, String visiblity, List<Tag> mytags) {
+        this.snippetTitle = snippetTitle;
+        this.snippetDescription = snippetDescription;
+        this.content = snippetContent;
+        this.snippetLanguage = snippetLanguage;
+        this.visiblity = visiblity;
+        this.tags = mytags;
+    }
+
     public List<Tag> getTags() {
         return tags;
     }
@@ -54,7 +68,7 @@ public class Snippet implements Serializable {
     public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
-   
+
     public long getSnippetId() {
         return snippetId;
     }
@@ -118,5 +132,23 @@ public class Snippet implements Serializable {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+    private static final Pattern NONLATIN = Pattern.compile("[^\\w-]");
+    private static final Pattern WHITESPACE = Pattern.compile("[\\s]");
+
+    public String getSlug() {
+        String input = this.snippetTitle;
+        String nowhitespace = WHITESPACE.matcher(input).replaceAll("-");
+        String normalized = Normalizer.normalize(nowhitespace, Form.NFD);
+        String slug = NONLATIN.matcher(normalized).replaceAll("");
+        return slug.toLowerCase(Locale.ENGLISH);
+    }
     
+    public static String getSlug(String input) {
+        String nowhitespace = WHITESPACE.matcher(input).replaceAll("-");
+        String normalized = Normalizer.normalize(nowhitespace, Form.NFD);
+        String slug = NONLATIN.matcher(normalized).replaceAll("");
+        return slug.toLowerCase(Locale.ENGLISH);
+    }
+
 }
