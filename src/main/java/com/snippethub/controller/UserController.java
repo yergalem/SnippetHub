@@ -58,9 +58,10 @@ public class UserController {
     public String loginUser(@ModelAttribute("currentUser") User user, RedirectAttributes redirectAttributes, Model model
     , HttpServletRequest request) {
         if(userService.authenticate(user)) {
-            request.getSession().setAttribute("user", user);
+            User loggedInUser = userService.getUserByEmail(user.getEmail());
+            request.getSession().setAttribute("loggedInUser", loggedInUser);
             redirectAttributes.addFlashAttribute("loginError", "yes");
-            return "user/show";
+            return "redirect:/users/1";
         }
         else {
           redirectAttributes.addFlashAttribute("loginError", "no");
@@ -96,7 +97,7 @@ public class UserController {
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();
-        return "login";
+        return "redirect:/";
     }
     
 }

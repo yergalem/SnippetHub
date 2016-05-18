@@ -22,7 +22,7 @@
                         <div class="body">
                         <form:form class="form-horizontal" modelAttribute="currentUser">
                                 <form:input path="email" class="form-control" placeholder="Email" />
-                                <form:input path="password" class="form-control" placeholder="Password" />
+                                <form:password path="password" class="form-control" placeholder="Password" />
                                 <input type="submit" class="login btn" value="Login" />
                         </form:form>
                         <c:if test='${loginError.equals("no")}'>

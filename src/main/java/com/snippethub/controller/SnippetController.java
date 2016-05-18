@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,6 @@ public class SnippetController {
     private SnippetService snippetSerrvice;
     @Autowired
     private TagService tagService;
-    
     @RequestMapping //annotation is necesssary for default one too.
     public String getAllSnippets(Model model) {
         model.addAttribute("snippets", snippetSerrvice.getAllSnippets());
@@ -50,7 +50,11 @@ public class SnippetController {
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String getCreateSnippetForm(Model model) {
+    public String getCreateSnippetForm(Model model, HttpServletRequest request) {
+        if(request.getSession().getAttribute("loggedInUser") == null) {
+            return "redirect:/login";
+        }
+        
         Snippet newSnippet = new Snippet();
         model.addAttribute("newSnippet", newSnippet);
         model.addAttribute("allTags", tagService.getAllTags());

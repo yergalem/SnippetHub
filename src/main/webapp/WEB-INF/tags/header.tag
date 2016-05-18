@@ -23,10 +23,22 @@
           </ul>
         </nav>
         <div class="account">
-          <ul class="list-inline">
-              <li><a href='<c:url value="/login"/>'>Login</a></li>
-            <li><a class="register" href='<c:url value="/register"/>'>Register</a></li>
-          </ul>
+         
+         <c:choose>
+             <c:when test="${loggedInUser.firstName == null}">
+                 <ul class="list-inline">
+                     <li><a href='<c:url value="/login"/>'>Login</a></li>
+                     <li><a class="register" href='<c:url value="/register"/>'>Register</a></li>
+                 </ul>
+             </c:when>
+             <c:when test="${loggedInUser.firstName != null}">
+                 <ul class="list-inline">
+                     <li><a class="" href='<c:url value="/snippets/create"/>'>New Snippet</a></li>
+                     <li><a class="" href='<c:url value="/users/1"/>'>${loggedInUser.firstName}</a></li>
+                     <li><a href='<c:url value="/logout"/>'>Logout</a></li>
+                 </ul>
+             </c:when>
+         </c:choose>
         </div>
       </div>
       <!-- End Header -->
