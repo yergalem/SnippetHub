@@ -70,13 +70,14 @@ public class Snippet implements Serializable {
         this.owner = owner;
     }
 
-    public Snippet(String snippetLanguage, String snippetTitle, String snippetContent, String snippetDescription, String visiblity, List<Tag> mytags) {
+    public Snippet(String snippetLanguage, String snippetTitle, String snippetContent, String snippetDescription, String visiblity, List<Tag> mytags, String owner) {
         this.snippetTitle = snippetTitle;
         this.snippetDescription = snippetDescription;
         this.content = snippetContent;
         this.snippetLanguage = snippetLanguage;
         this.visiblity = visiblity;
         this.tags = mytags;
+        this.owner = owner;
     }
 
     public List<Tag> getTags() {

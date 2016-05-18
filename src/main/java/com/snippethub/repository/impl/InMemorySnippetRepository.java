@@ -28,7 +28,7 @@ public class InMemorySnippetRepository implements SnippetRepository {
         List<Tag> listOfTags = new ArrayList<>();
         Tag tag1 = new Tag("javascript");
         listOfTags.add(tag1);
-        Snippet sn1 = new Snippet("javascript", "Arrow functions", "x => x+1", "Increment x by 1", "public", listOfTags);
+        Snippet sn1 = new Snippet("javascript", "Arrow functions", "x => x+1", "Increment x by 1", "public", listOfTags, "rahel");
         listOfSnippet.add(sn1);
     }
 
