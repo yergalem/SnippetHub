@@ -16,18 +16,15 @@ public class User implements Serializable {
     @GeneratedValue
     private Long userID;
     
-    @Email
-    @NotNull
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "{register.user.email}")
     private String email;
 
-    @NotNull
+    @NotEmpty(message = "{register.user.password}")
     private String password;
 
-    @NotNull
+    @NotEmpty(message = "{register.user.firstName}")
     private String firstName;
-    @NotNull
+    @NotEmpty(message = "{register.user.lastName}")
     private String lastName;
 
     private String biography;

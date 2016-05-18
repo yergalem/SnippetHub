@@ -87,7 +87,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registeUser(@ModelAttribute("newUser") @Valid User newUser, BindingResult result) {
         if(result.hasErrors()) {
-          return "login";
+          return "user/register";
         }
         userService.addUser(newUser);
         return "redirect:/login";
