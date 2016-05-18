@@ -37,7 +37,7 @@ public class Snippet implements Serializable {
         this.content = snippetContent;
         this.createDate = createDate;
         this.modifiedDate = modifiedDate;
-        this.snippetLanguage = snippetLanguage.toLowerCase();
+        this.snippetLanguage = snippetLanguage;
         this.visiblity = visiblity;
         this.tags = tags;
     }

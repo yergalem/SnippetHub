@@ -14,29 +14,29 @@
         <div class="container">
             <div class="row">
                 <c:forEach var="snippet" items="${snippets}">
-                    <div class="col-xs-12 col-sm-6">
-                        <a href="#">
-                            <div class="snippet-box">
-                                <div class="snippet-code">
-                                    <pre>
+                        <div class="col-xs-12 col-sm-6">
+                            <a href="#">
+                                <div class="snippet-box">
+                                    <div class="snippet-code">
+                                        <pre>
                                       <code class="language-${snippet.language}">
 ${snippet.content}
                                      </code>
-                                    </pre>
-                                </div>
-                                <div class="snippet-details">
-                                    <div class="snippet-title">
-                                        ${snippet.snippetTitle}
+                                        </pre>
                                     </div>
-                                    <div class="description">
-                                        ${snippet.snippetDescription}
+                                    <div class="snippet-details">
+                                        <div class="snippet-title">
+                                            ${snippet.snippetTitle}
+                                        </div>
+                                        <div class="description">
+                                            ${snippet.snippetDescription}
+                                        </div>
+                                        <ul class="list-inline tags">
+                                            <li><a href="" class="tag">${snippet.tags}</a></li>
+                                        </ul>
                                     </div>
-                                    <ul class="list-inline tags">
-                                        <li><a href="" class="tag">${snippet.tags}</a></li>
-                                    </ul>
                                 </div>
-                            </div>
-                    </div>
+                        </div>
                 </c:forEach>
             </div>
         </div>

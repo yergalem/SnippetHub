@@ -44,9 +44,9 @@ public class SnippetServiceImpl implements SnippetService{
     @Override
     public List<Language> getAllLaungauges() {
         List<Language> languages = new ArrayList<>();
-        Language lang1 = new Language(1, "Javascript");
-        Language lang2 = new Language(2, "PHP");
-        Language lang3 = new Language(3, "Ruby");
+        Language lang1 = new Language(1, "javascript");
+        Language lang2 = new Language(2, "php");
+        Language lang3 = new Language(3, "ruby");
         languages.add(lang1);
         languages.add(lang2);
         languages.add(lang3);
