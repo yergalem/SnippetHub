@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -21,13 +22,15 @@ import javax.persistence.Id;
 public class Snippet implements Serializable {
 
     private long snippetId;
+    @NotEmpty(message = "{snippet.title}")
     private String snippetTitle;
     private String snippetDescription;
+    @NotEmpty(message = "{snippet.content}")
     private String content;
     private Date createDate;
     private Date modifiedDate;
     private String snippetLanguage;
-    private String visiblity;
+    private String visiblity = "private";
     private List<Tag> tags;
 
     public Snippet() {

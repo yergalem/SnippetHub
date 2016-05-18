@@ -21,6 +21,7 @@
                         </div>
                         <div class="body">
                             <form:form class="form-horizontal" modelAttribute="newSnippet">
+                                <form:errors path="*" cssClass="alert alert-danger" element="div"/>
                                 <form:select path="language" id="language-list" class="form-control">
                                     <form:option value="">Select Language</form:option>
                                     <c:forEach var="lang" items="${languages}">
