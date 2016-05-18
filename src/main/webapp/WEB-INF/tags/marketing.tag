@@ -15,7 +15,7 @@
         <div class="tags">
             <ul class="list-inline">
                 <c:forEach var="tag" items="${homeTags}">
-                    <li><a href='<c:url value="/tags/${tag.slug}"></c:url>' class="tag">${tag.slug}</a></li>
+                    <li><a href='<c:url value="/snippets/tag/${tag.slug}"></c:url>' class="tag">${tag.slug}</a></li>
                 </c:forEach>
             </ul>
         </div>
