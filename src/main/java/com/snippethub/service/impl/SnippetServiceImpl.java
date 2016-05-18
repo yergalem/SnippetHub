@@ -60,9 +60,17 @@ public class SnippetServiceImpl implements SnippetService{
 
     @Override
     public List<Snippet> search(String searchTerm) {
-        List<Snippet> searchResult = new ArrayList<>();
-        searchResult.add(this.getSnippetByTitle(searchTerm));
-        return searchResult;
+        List<Snippet> all = this.getAllSnippets();
+        List<Snippet> matching = new ArrayList<>();
+        //if the search term is empty return all the snippets :) or in my case XXX
+        if(searchTerm.equals("XXX"))
+            return all;
+        for (Snippet snippet : all) {
+            if (snippet.getSnippetTitle().toLowerCase().contains(searchTerm) && snippet.getVisiblity().equals("public")) {
+                matching.add(snippet);
+            }
+        }
+        return matching;
     }
     @Override
     public List<Snippet> getSnippetListByFirstName(String firstName) {

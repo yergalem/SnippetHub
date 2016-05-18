@@ -1,10 +1,3 @@
-<%-- 
-    Document   : page1
-    Created on : May 16, 2016, 5:57:07 PM
-    Author     : tekeste
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     <c:forEach var="snippet" items="${matchingSnippets}">
                         <div class="col-xs-12 col-sm-6">

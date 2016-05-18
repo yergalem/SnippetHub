@@ -9,28 +9,41 @@ important:/\b(?:always_latch|always_comb|always_ff|always)\b ?@?/,number:/\B##?\
 var Search = {
     //wire up event listeners
     keystrokeTimeout: "",
+    ajaxRequest: "",
     init: function() {
             var searchBox = $(".search-box");
             this.bindEvents(searchBox)
     },
     bindEvents: function(searchBox) {
         var that = this;
+        var searchTerm = "XXX"; //I needed to do this because it was hitting getbytitle instead of search if it is empty
         searchBox.on('keyup', function(){
-            that.keyupHandler(searchBox.val());
+            if(searchBox.val() != "")
+                searchTerm = searchBox.val();
+            else
+                searchTerm = "XXX";
+            that.keyupHandler(searchTerm);
         });
     },
     keyupHandler: function(searchTerm) {
         var that = this;
         window.clearTimeout(this.keystrokeTimeout);
-        this.keystrokeTimeout = window.setTimeout(function(){
+        //this.keystrokeTimeout = window.setTimeout(function(){
             that.search(searchTerm);
-        }, 350);
+        //}, 350);
     },
     search: function(searchTerm) {
         var url = "http://localhost:8080/SnippetHub/snippets/search/" + searchTerm;
-        $.get(url).success(function(res) {
-            console.log(res);
-        });
+//        this.ajaxRequest = $.get(url).success(function(res) {
+//            $(".snippets-row").html(res);
+//        });
+        $.ajax({
+            url:url,
+            success: function(res) {
+                $(".snippets-row").html(res);
+                Prism.highlightAll();
+            }
+        })
     }
 };
 (function(){

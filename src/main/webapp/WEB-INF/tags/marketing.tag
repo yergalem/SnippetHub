@@ -5,18 +5,18 @@
 --%>
 
 <%@tag description="marketing peiece" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <div class="marketing">
     <h1>Welcome to SnippetHub</h1>
-    <h2>Create awesome code snippets .</h2>
+    <h2>Create and search awesome code snippets .</h2>
     <div class="search">
         <input type="text" placeholder="Start typing" class="search-box">
         <div class="tags">
             <ul class="list-inline">
-                <li><a href="" class="tag">JavaScript</a></li>
-                <li><a href="" class="tag">JavaScript</a></li>
-                <li><a href="" class="tag">JavaScript</a></li>
-                <li><a href="" class="tag">JavaScript</a></li>
-                <li><a href="" class="tag">JavaScript</a></li>
+                <c:forEach var="tag" items="${homeTags}">
+                    <li><a href='<c:url value="/tags/${tag.slug}"></c:url>' class="tag">${tag.slug}</a></li>
+                </c:forEach>
             </ul>
         </div>
     </div>

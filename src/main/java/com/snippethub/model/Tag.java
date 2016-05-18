@@ -1,5 +1,6 @@
 package com.snippethub.model;
 
+import com.snippethub.model.util.Util;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -92,6 +93,9 @@ public class Tag {
 
     public void setUpdateDate(LocalDate updateDate) {
         this.updateDate = updateDate;
+    }
+    public String getSlug() {
+        return Util.getSlug(this.tagTitle);
     }
     
     

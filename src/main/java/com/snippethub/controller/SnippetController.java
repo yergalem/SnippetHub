@@ -92,8 +92,9 @@ public class SnippetController {
     public String search(@PathVariable(value = "searchTerm") String searchTerm, Model model) {
        List<Snippet> matchingSnippets = snippetSerrvice.search(searchTerm);
         model.addAttribute("matchingSnippets",matchingSnippets );
-        if(matchingSnippets.isEmpty())
-            return "No snippets found";
+        System.out.println("size is " + matchingSnippets.size() + " for " + searchTerm);
+        if(matchingSnippets.size() <= 0)
+            return "snippet/notfound";
         else
             return "snippet/searchResult";
     }
