@@ -24,12 +24,10 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public boolean authenticate(User user) {
-        
-        User userWithMatchingId = userRepository.getUserByID(user.getUserID());
+        User userWithMatchingId = userRepository.getUserByEmail(user.getEmail());
         if(userWithMatchingId != null)
             return userWithMatchingId.getPassword().equals(user.getPassword());
         return false;
-    
     }
 
     @Override

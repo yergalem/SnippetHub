@@ -21,6 +21,7 @@
                         </div>
                         <div class="body">
                             <form:form class="form-horizontal" modelAttribute="newUser">
+                                <form:errors path="*" cssClass="alert alert-danger" element="div"/>
                                 <form:input path="email" type="text" class="form-control" placeholder="Email" />
                                 <form:input path="firstName" type="text" class="form-control" placeholder="First Name" />
                                 <form:input path="lastName" type="text" class="form-control" placeholder="Last Name" />

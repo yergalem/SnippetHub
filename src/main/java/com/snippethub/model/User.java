@@ -20,7 +20,6 @@ public class User implements Serializable {
     @NotNull
     @NotEmpty
     @NotBlank
-    
     private String email;
 
     @NotNull

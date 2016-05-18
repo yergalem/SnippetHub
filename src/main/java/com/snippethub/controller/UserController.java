@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -41,8 +42,29 @@ public class UserController {
      * @return 
      */
     @RequestMapping(value="/login", method=RequestMethod.GET)
-    public String getLoginForm() {
+    public String getLoginForm(Model model) {
+        User user = new User();
+        model.addAttribute("currentUser", user);
         return "user/login";
+    }
+    
+    /**
+     * Display the login form
+     *
+     * @return
+     */
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginUser(@ModelAttribute("currentUser") User user, RedirectAttributes redirectAttributes, Model model
+    , HttpServletRequest request) {
+        if(userService.authenticate(user)) {
+            request.getSession().setAttribute("user", user);
+            redirectAttributes.addFlashAttribute("loginError", "");
+            return "user/show";
+        }
+        else {
+          redirectAttributes.addFlashAttribute("loginError", "Wrong email or password");
+          return "redirect:/login";
+        }
     }
     
     /**
@@ -57,14 +79,14 @@ public class UserController {
     }
 
     /**
-     * Display the register form
+     * Save new user
      *
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registeUser(@ModelAttribute("newUser") @Valid User newUser) {
         userService.addUser(newUser);
-        return "redirect:/snippets/create";
+        return "redirect:/login";
     }
     
     @RequestMapping("/logout")

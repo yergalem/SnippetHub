@@ -20,7 +20,6 @@ public class InMemoryUserRepository implements UserRepository {
 
     public InMemoryUserRepository() {
         users = new HashMap<>();
-               
     }
 
     @Override
@@ -74,6 +73,17 @@ public class InMemoryUserRepository implements UserRepository {
     @Override
     public boolean authenticate(User user) {
         return false;
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        for (User user : users.values()) {
+
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null;
     }
     
 }

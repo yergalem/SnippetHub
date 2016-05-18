@@ -4,6 +4,8 @@
     Author     : tekeste
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
@@ -18,11 +20,16 @@
                             <h2>Login</h2>
                         </div>
                         <div class="body">
-                            <form action="#" class="form-horizontal">
-                                <input type="text" class="form-control" placeholder="Email">
-                                <input type="text" class="form-control" placeholder="Password">
-                                <input type="submit" class="login btn" value="Login">
-                            </form>
+                        <form:form class="form-horizontal" modelAttribute="currentUser">
+                                <form:input path="email" class="form-control" placeholder="Email" />
+                                <form:input path="password" class="form-control" placeholder="Password" />
+                                <input type="submit" class="login btn" value="Login" />
+                            </form:form>
+                        <c:if test='${!loginError.equals("")}'>
+                            <div class="alert alert-danger">
+                                ${loginError}
+                            </div>
+                        </c:if>
                         </div>
                     </div>
                 </div>
