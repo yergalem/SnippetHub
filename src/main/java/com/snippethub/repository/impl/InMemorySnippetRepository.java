@@ -9,6 +9,7 @@ package com.snippethub.repository.impl;
 import com.snippethub.repository.SnippetRepository;
 import com.snippethub.model.Snippet;
 import com.snippethub.model.Tag;
+import com.snippethub.model.util.Util;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ public class InMemorySnippetRepository implements SnippetRepository {
     @Override
     public Snippet getSnippetByTitle(String title) {
         for (Snippet snippet : listOfSnippet) {
-            if (snippet.getSlug().equals(Snippet.getSlug(title))) {
+            if (snippet.getSlug().equals(Util.getSlug(title))) {
                 return snippet;
             }
         }

@@ -5,6 +5,7 @@
  */
 package com.snippethub.model;
 
+import com.snippethub.model.util.Util;
 import java.io.Serializable;
 import java.text.Normalizer;
 import java.text.Normalizer.Form;
@@ -132,23 +133,7 @@ public class Snippet implements Serializable {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
-
-    private static final Pattern NONLATIN = Pattern.compile("[^\\w-]");
-    private static final Pattern WHITESPACE = Pattern.compile("[\\s]");
-
     public String getSlug() {
-        String input = this.snippetTitle;
-        String nowhitespace = WHITESPACE.matcher(input).replaceAll("-");
-        String normalized = Normalizer.normalize(nowhitespace, Form.NFD);
-        String slug = NONLATIN.matcher(normalized).replaceAll("");
-        return slug.toLowerCase(Locale.ENGLISH);
+        return Util.getSlug(this.snippetTitle);
     }
-    
-    public static String getSlug(String input) {
-        String nowhitespace = WHITESPACE.matcher(input).replaceAll("-");
-        String normalized = Normalizer.normalize(nowhitespace, Form.NFD);
-        String slug = NONLATIN.matcher(normalized).replaceAll("");
-        return slug.toLowerCase(Locale.ENGLISH);
-    }
-
 }
