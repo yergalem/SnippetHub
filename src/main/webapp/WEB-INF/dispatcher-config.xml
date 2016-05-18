@@ -14,7 +14,7 @@
   </bean>
   <bean id="validator"
         class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-      <property name="validationMessageSource" ref="messageSource"/>
+      <!--<property name="validationMessageSource" ref="messageSource"/>-->
   </bean>
   <mvc:annotation-driven validator="validator"/>
   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

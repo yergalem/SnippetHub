@@ -7,9 +7,12 @@ package com.snippethub.controller;
 //import com.snippethub.dao.SnippetRepository;
 import com.snippethub.model.Snippet;
 import com.snippethub.service.SnippetService;
+import com.snippethub.service.TagService;
+import com.snippethub.service.impl.TagServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,9 @@ public class SnippetController {
     
     @Autowired
     private SnippetService snippetSerrvice;
+    @Autowired
+    private TagService tagService;
+    
     @RequestMapping //annotation is necesssary for default one too.
     public String getAllSnippets(Model model) {
         model.addAttribute("snippets", snippetSerrvice.getAllSnippets());
@@ -46,12 +52,13 @@ public class SnippetController {
     public String getCreateSnippetForm(Model model) {
         Snippet newSnippet = new Snippet();
         model.addAttribute("newSnippet", newSnippet);
+        model.addAttribute("allTags", tagService.getAllTags());
         model.addAttribute("languages", snippetSerrvice.getAllLaungauges());
         return "snippet/create";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String processCreateSnippetForm(@ModelAttribute("newSnippet")@Valid Snippet snippetTobeAdded ) {
+    public String processCreateSnippetForm(@ModelAttribute("newSnippet")@Valid Snippet snippetTobeAdded, HttpServletRequest request ) {
         snippetSerrvice.addSnippet(snippetTobeAdded);
         return "redirect:/snippets";
     }

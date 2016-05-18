@@ -6,7 +6,9 @@
 package com.snippethub.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,12 +28,12 @@ public class Snippet implements Serializable {
     private Date modifiedDate;
     private String snippetLanguage;
     private String visiblity;
-    private String tags;
+    private List<Tag> tags;
 
     public Snippet() {
-        
+        this.tags = new ArrayList<>();
     }
-    public Snippet(String snippetTitle, String snippetDescription, String snippetContent, Date createDate, Date modifiedDate, String snippetLanguage, String visiblity, String tags) {
+    public Snippet(String snippetTitle, String snippetDescription, String snippetContent, Date createDate, Date modifiedDate, String snippetLanguage, String visiblity, List<Tag> tags) {
         this.snippetTitle = snippetTitle;
         this.snippetDescription = snippetDescription;
         this.content = snippetContent;
@@ -42,11 +44,11 @@ public class Snippet implements Serializable {
         this.tags = tags;
     }
     
-    public String getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
    

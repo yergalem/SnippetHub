@@ -32,7 +32,9 @@ ${snippet.content}
                                             ${snippet.snippetDescription}
                                         </div>
                                         <ul class="list-inline tags">
-                                            <li><a href="" class="tag">${snippet.tags}</a></li>
+                                            <c:forEach var="tag" items="${snippet.tags}">
+                                                    <li><a href="" class="tag">${tag.tagTitle}</a></li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div>

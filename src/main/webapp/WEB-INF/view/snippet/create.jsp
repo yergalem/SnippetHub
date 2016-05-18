@@ -36,10 +36,9 @@
                                     <label class="radio-inline"><form:radiobutton path="visiblity" value="public" />Public</label>
                                 </div>
                                 <form:select multiple="true" path="tags" id="tag-list" class="form-control">
-                                    <form:option value="">Select Tag</form:option>
-                                    <form:option value="javascript">Recursion</form:option>
-                                    <form:option value="php">PHP</form:option>
-                                    <form:option value="java">Java</form:option>
+                                    <c:forEach var="tag" items="${allTags}">
+                                        <form:option value="${tag.tagTitle}">${tag.tagTitle}</form:option>
+                                    </c:forEach>
                                 </form:select>
                                 <a href="#" class="create-tag" data-toggle="modal" data-target="#addTag">
                                     Or add your own tag
