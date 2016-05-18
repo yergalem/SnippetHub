@@ -21,6 +21,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <word>SnippetHub</word>
         <word>Tarekegn</word>
         <word>Tekeste</word>
+        <word>Visiblity</word>
         <word>Yirgalem</word>
     </spellchecker-wordlist>
 </project-shared-configuration>

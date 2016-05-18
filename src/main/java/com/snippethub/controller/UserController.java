@@ -64,7 +64,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registeUser(@ModelAttribute("newUser") @Valid User newUser) {
         userService.addUser(newUser);
-        return "redirect:/user/index";
+        return "redirect:/snippets/create";
     }
     
     @RequestMapping("/logout")

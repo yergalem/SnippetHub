@@ -4,8 +4,11 @@
     Author     : tekeste
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <t:mainLayout pageTitle="Create Snippet">
     <jsp:body>
@@ -17,35 +20,32 @@
                             <h2>New Snippet</h2>
                         </div>
                         <div class="body">
-                            <form action="#" class="form-horizontal">
-                                <select name="language" id="language-list" class="form-control">
-                                    <option value="">Select Language</option>
-                                    <option value="javascript">JavaScript</option>
-                                    <option value="php">PHP</option>
-                                    <option value="java">Java</option>
-                                </select>
-                                <input type="text" class="form-control" placeholder="Title">
-                                <textarea placeholder="//Your Code Here" name="content" id="codeEditor" cols="30" rows="10" class="form-control"></textarea>
-                                <textarea name="description" id="description" cols="30" rows="5" class="form-control" placeholder="What does it do?"></textarea>
-
+                            <form:form class="form-horizontal" modelAttribute="newSnippet">
+                                <form:select path="language" id="language-list" class="form-control">
+                                    <form:option value="">Select Language</form:option>
+                                    <c:forEach var="lang" items="${languages}">
+                                        <form:option value="${lang.languageName}">${lang.languageName}</form:option>
+                                    </c:forEach>
+                                </form:select>
+                                <form:input path="snippetTitle" type="text" class="form-control" placeholder="Title" />
+                                <form:textarea path="content" placeholder="//Your Code Here"  id="codeEditor" cols="30" rows="10" class="form-control"/>
+                                <form:textarea path="snippetDescription" id="description" cols="30" rows="5" class="form-control" placeholder="What does it do?" />
                                 <div class="visiblity-control">
-                                    <div>
-                                        Visiblity
-                                    </div>
-                                    <label class="radio-inline"><input type="radio" name="visiblity">Private</label>
-                                    <label class="radio-inline"><input type="radio" name="visiblity">Public</label>
+                                    <div> Visiblity </div>
+                                    <label class="radio-inline"><form:radiobutton path="visiblity" value="private" />Private</label>
+                                    <label class="radio-inline"><form:radiobutton path="visiblity" value="public" />Public</label>
                                 </div>
-                                <select multiple name="tags" id="tag-list" class="form-control">
-                                    <option value="">Select Tag</option>
-                                    <option value="javascript">Recursion</option>
-                                    <option value="php">PHP</option>
-                                    <option value="java">Java</option>
-                                </select>
+                                <form:select multiple="true" path="tags" id="tag-list" class="form-control">
+                                    <form:option value="">Select Tag</form:option>
+                                    <form:option value="javascript">Recursion</form:option>
+                                    <form:option value="php">PHP</form:option>
+                                    <form:option value="java">Java</form:option>
+                                </form:select>
                                 <a href="#" class="create-tag" data-toggle="modal" data-target="#addTag">
                                     Or add your own tag
                                 </a>
-                                <input type="submit" class="login btn" value="Save">
-                            </form>
+                                <input type="submit" class="login btn" value="Save" />
+                            </form:form>
                         </div>
                     </div>
                 </div>

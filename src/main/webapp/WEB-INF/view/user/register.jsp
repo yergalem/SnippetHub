@@ -24,7 +24,7 @@
                                 <form:input path="email" type="text" class="form-control" placeholder="Email" />
                                 <form:input path="firstName" type="text" class="form-control" placeholder="First Name" />
                                 <form:input path="lastName" type="text" class="form-control" placeholder="Last Name" />
-                                <form:input path="password" type="text" class="form-control" placeholder="Password" />
+                                <form:password path="password" class="form-control" placeholder="Password" />
                                 <form:input path="phone" type="text" class="form-control" placeholder="Phone"></form:input>
                                 <form:textarea path="biography" class="form-control" placeholder="Who are you?"/>
                                 <input type="submit" class="login btn" value="Register">
