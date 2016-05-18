@@ -87,6 +87,11 @@ public class Tag {
         this.createDate = createDate;
     }
 
+    @Override
+    public String toString() {
+        return this.getSlug();
+    }
+
     public LocalDate getUpdateDate() {
         return updateDate;
     }

@@ -68,6 +68,12 @@ public class SnippetServiceImpl implements SnippetService{
         for (Snippet snippet : all) {
             if (snippet.getSnippetTitle().toLowerCase().contains(searchTerm) && snippet.getVisiblity().equals("public")) {
                 matching.add(snippet);
+            } else if(snippet.getTags().toString().contains(searchTerm)) {
+                matching.add(snippet);
+            } else if(snippet.getOwner().contains(searchTerm)) {
+                matching.add(snippet);
+            } else if(snippet.getSnippetDescription().toLowerCase().contains(searchTerm)) {
+                matching.add(snippet);
             }
         }
         return matching;

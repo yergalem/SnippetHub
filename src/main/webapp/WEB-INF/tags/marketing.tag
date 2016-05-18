@@ -11,7 +11,7 @@
     <h1>Welcome to SnippetHub</h1>
     <h2>Create and search awesome code snippets .</h2>
     <div class="search">
-        <input type="text" placeholder="Start typing" class="search-box">
+        <input type="text" placeholder="Search by title, description, author and tags" class="search-box">
         <div class="tags">
             <ul class="list-inline">
                 <c:forEach var="tag" items="${homeTags}">
