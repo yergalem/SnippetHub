@@ -31,12 +31,14 @@
                     </div>
                     <div class="col-xs-12 col-sm-9">
                         <div class="row">
+                            <c:forEach var="snippet" items="${userSnippets}">
                                 <!-- Single snippet box -->
                                 <div class="col-xs-12 col-sm-6">
                                     <a href="#">
                                         <div class="snippet-box">
                                             <div class="snippet-code">
                                                 <pre>
+                          <code class="language-${snippet.language}">
 ${snippet.content}
                           </code>
                                                 </pre>
