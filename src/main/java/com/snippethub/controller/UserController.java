@@ -1,27 +1,31 @@
 
 package com.snippethub.controller;
 
-import com.snippethub.model.UserEntity;
 //import com.snippethub.service.UserService;
+import com.snippethub.model.User;
+import com.snippethub.service.UserService;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
  
-//    @Autowired
-//    UserService userService;
+    @Autowired
+    UserService userService;
     /**
      * Display all users
      * @return 
      */
     @RequestMapping("/users")
-    public String users() {
+    public String users(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
         return "user/index";
     }
     
@@ -46,23 +50,23 @@ public class UserController {
      * @return 
      */
     @RequestMapping(value="/register", method=RequestMethod.GET)
-    public String getRegisterForm() {
+    public String getRegisterForm(Model model) {
+        User newUser = new User();
+        model.addAttribute("newUser", newUser);
         return "user/register";
     }
-    
-//    @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-//    public String authenticate(UserEntity user, HttpServletRequest request,
-//            RedirectAttributes redirectAttributes) {
-//        if (userService.authenticate(user)) {
-//            request.getSession().setAttribute("user", user);
-//            //redirectAttributes.addFlashAttribute("tagline",
-//                    //"Welcome to the one and only amazing webstore");
-//            return "redirect:/welcome";
-//        } else {
-//            throw new IllegalArgumentException("UserId and/or password invalid.");
-//        }
-//    }
 
+    /**
+     * Display the register form
+     *
+     * @return
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String registeUser(@ModelAttribute("newUser") @Valid User newUser) {
+        userService.addUser(newUser);
+        return "redirect:/user/index";
+    }
+    
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();

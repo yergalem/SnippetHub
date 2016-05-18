@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <t:mainLayout pageTitle="Register">
     <jsp:body>
@@ -18,15 +20,15 @@
                             <h2>Register</h2>
                         </div>
                         <div class="body">
-                            <form action="#" class="form-horizontal">
-                                <input type="text" class="form-control" placeholder="Email">
-                                <input type="text" class="form-control" placeholder="First Name">
-                                <input type="text" class="form-control" placeholder="Last Name">
-                                <input type="text" class="form-control" placeholder="Password">
-                                <input type="text" class="form-control" placeholder="Address">
-                                <textarea class="form-control" placeholder="Who are you?"></textarea>
+                            <form:form class="form-horizontal" modelAttribute="newUser">
+                                <form:input path="email" type="text" class="form-control" placeholder="Email" />
+                                <form:input path="firstName" type="text" class="form-control" placeholder="First Name" />
+                                <form:input path="lastName" type="text" class="form-control" placeholder="Last Name" />
+                                <form:input path="password" type="text" class="form-control" placeholder="Password" />
+                                <form:input path="phone" type="text" class="form-control" placeholder="Phone"></form:input>
+                                <form:textarea path="biography" class="form-control" placeholder="Who are you?"/>
                                 <input type="submit" class="login btn" value="Register">
-                            </form>
+                            </form:form>
                         </div>
                     </div>
                 </div>

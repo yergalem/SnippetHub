@@ -13,15 +13,15 @@
         <div class="snippets-container">
             <div class="container">
                 <div class="row">
-                    <c:forEach var="i" begin="0" end="4">
+                    <c:forEach var="user" items="${users}">
                         <div class="col-xs-6 col-sm-4">
                             <div class="user-profile">
                                 <img src='<c:url value="resources/images/profile.jpg" />' alt="Profile image" class="profile-img">
                                 <div class="user-info">
-                                    <h1>Melissa Troy <span class="count">90</span></h1>
-                                    <h2>meli@gmail.com</h2>
+                                    <h1>${user.fullName} <span class="count">90</span></h1>
+                                    <h2>${user.email}</h2>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quis corporis, aperiam nulla et repudiandae ipsam numquam aut delectus dignissimos cupiditate iste perferendis vitae repellendus, facilis nihil minus. Nihil, totam.
+                                        ${user.biography}
                                     </p>
                                 </div>
                             </div>
