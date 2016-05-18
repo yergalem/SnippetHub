@@ -44,6 +44,7 @@
                                 <a href="#" class="create-tag" data-toggle="modal" data-target="#addTag">
                                     Or add your own tag
                                 </a>
+                                <form:hidden path="owner" value="${loggedInUser.slug}"></form:hidden>
                                 <input type="submit" class="login btn" value="Save" />
                             </form:form>
                         </div>

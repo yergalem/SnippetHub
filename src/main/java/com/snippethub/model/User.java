@@ -47,10 +47,11 @@ public class User implements Serializable {
         this.profilePicture = profilePicture;
     }
 
-    public User(String email, String password, String firstname) {
+    public User(String email, String password, String firstname, String lastname) {
         this.email = email;
         this.password = password;
         this.firstName = firstname;
+        this.lastName = lastname;
     }
     
     

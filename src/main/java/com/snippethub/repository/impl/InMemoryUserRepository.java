@@ -21,7 +21,7 @@ public class InMemoryUserRepository implements UserRepository {
 
     public InMemoryUserRepository() {
         users = new HashMap<>();
-        User user1 = new User("t@t.com","pass", "Tekeste");
+        User user1 = new User("t@t.com","pass", "Rahel", "Kidanu");
         users.put(Long.MIN_VALUE, user1);
     }
 

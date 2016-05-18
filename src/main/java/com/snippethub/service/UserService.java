@@ -6,7 +6,6 @@ import java.util.List;
 
 
 public interface UserService {
-    
    public List<User> getAllUsers();
    public User getUserByID( long userID );
    public void addUser(User user);
@@ -14,6 +13,5 @@ public interface UserService {
    public boolean editUser(User user);
    public boolean authenticate(User user);
    public User getUserByFirstName(String firstName);
-    public User getUserByEmail(String email);
-   
+   public User getUserByEmail(String email); 
 }

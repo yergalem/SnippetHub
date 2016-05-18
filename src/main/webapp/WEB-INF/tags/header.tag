@@ -34,7 +34,7 @@
              <c:when test="${loggedInUser.firstName != null}">
                  <ul class="list-inline">
                      <li><a class="" href='<c:url value="/snippets/create"/>'>New Snippet</a></li>
-                     <li><a class="" href='<c:url value="/users/1"/>'>${loggedInUser.firstName}</a></li>
+                     <li><a class="" href='<c:url value="/users/${loggedInUser.slug}"/>'>${loggedInUser.firstName}</a></li>
                      <li><a href='<c:url value="/logout"/>'>Logout</a></li>
                  </ul>
              </c:when>

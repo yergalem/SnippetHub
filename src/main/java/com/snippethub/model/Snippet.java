@@ -37,12 +37,28 @@ public class Snippet implements Serializable {
     private String snippetLanguage;
     private String visiblity = "private";
     private List<Tag> tags;
+    private String owner;
 
+    public String getSnippetLanguage() {
+        return snippetLanguage;
+    }
+
+    public void setSnippetLanguage(String snippetLanguage) {
+        this.snippetLanguage = snippetLanguage;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
     public Snippet() {
         this.tags = new ArrayList<>();
     }
 
-    public Snippet(String snippetTitle, String snippetDescription, String snippetContent, Date createDate, Date modifiedDate, String snippetLanguage, String visiblity, List<Tag> tags) {
+    public Snippet(String snippetTitle, String snippetDescription, String snippetContent, Date createDate, Date modifiedDate, String snippetLanguage, String visiblity, List<Tag> tags, String owner) {
         this.snippetTitle = snippetTitle;
         this.snippetDescription = snippetDescription;
         this.content = snippetContent;
@@ -51,6 +67,7 @@ public class Snippet implements Serializable {
         this.snippetLanguage = snippetLanguage;
         this.visiblity = visiblity;
         this.tags = tags;
+        this.owner = owner;
     }
 
     public Snippet(String snippetLanguage, String snippetTitle, String snippetContent, String snippetDescription, String visiblity, List<Tag> mytags) {

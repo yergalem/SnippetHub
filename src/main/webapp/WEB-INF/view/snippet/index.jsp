@@ -26,7 +26,7 @@
                                     <div class="snippet-details">
                                         <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
                                             <div class="snippet-title">
-                                                ${snippet.snippetTitle}
+                                                ${snippet.snippetTitle} by ${snippet.owner}
                                             </div>
                                             <div class="description">
                                                 ${snippet.snippetDescription}

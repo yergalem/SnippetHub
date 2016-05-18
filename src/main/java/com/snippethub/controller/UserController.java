@@ -37,6 +37,7 @@ public class UserController {
     @RequestMapping(value="/users/{firstName}", method=RequestMethod.GET)
     public String getProfile(@PathVariable("firstName") String firstName, Model model) {
         model.addAttribute("singleUser", userService.getUserByFirstName(firstName));
+        model.addAttribute("userSnippets");
         return "user/show";
     }
     /**
