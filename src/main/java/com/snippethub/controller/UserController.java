@@ -63,7 +63,7 @@ public class UserController {
             User loggedInUser = userService.getUserByEmail(user.getEmail());
             request.getSession().setAttribute("loggedInUser", loggedInUser);
             redirectAttributes.addFlashAttribute("loginError", "yes");
-            return "redirect:/users/1";
+            return "redirect:/users/"+loggedInUser.getSlug();
         }
         else {
           redirectAttributes.addFlashAttribute("loginError", "no");
