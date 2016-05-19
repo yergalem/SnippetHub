@@ -3,6 +3,7 @@
     Created on : May 17, 2016, 3:34:32 PM
     Author     : tekeste
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@tag description="create tag modal" pageEncoding="UTF-8"%>
   <!-- start add snippet modal -->
@@ -22,6 +23,10 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </form>
+            <div class="loading hidden">
+                <img src='<c:url value="/resources/images/loader.gif" />' alt="Profile image" class="loader-img">
+                <h3>Saving tag</h3>
+            </div>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

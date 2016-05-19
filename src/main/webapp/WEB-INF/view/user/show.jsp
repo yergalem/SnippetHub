@@ -19,9 +19,9 @@
                                 Edit
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <img src='<c:url value="/resources/images/profile.jpg" />' alt="Profile image" class="profile-img">
+                            <img src='<c:url value="/resources/images/profile.png" />' alt="Profile image" class="profile-img">
                             <div class="user-info">
-                                <h1>${singleUser.fullName} <span class="count">90</span></h1>
+                                <h1>${singleUser.fullName} <!--<span class="count">90</span></h1>-->
                                 <h2>${singleUser.email}</h2>
                                 <p>
                                     ${singleUser.biography}
@@ -34,25 +34,30 @@
                             <c:forEach var="snippet" items="${userSnippets}">
                                 <!-- Single snippet box -->
                                 <div class="col-xs-12 col-sm-6">
-                                    <a href="#">
-                                        <div class="snippet-box">
-                                            <div class="snippet-code">
-                                                <pre>
-                          <code class="language-${snippet.language}">
-${snippet.content}
-                          </code>
+                                    <div class="snippet-box">
+                                        <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
+                                                <div class="snippet-code">
+                                                    <pre>
+<code class="language-${snippet.language}">${snippet.content}</code>
                                                 </pre>
                                             </div>
-                                            <div class="snippet-details">
-                                                <div class="snippet-title">
-                                                    ${snippet.snippetTitle}
+                                        </a>
+                                        <div class="snippet-details">
+                                            <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
+                                                    <div class="snippet-title">
+                                                    ${snippet.snippetTitle} by ${snippet.owner}
                                                 </div>
                                                 <div class="description">
-                                                      ${snippet.snippetDescription}  
+                                                    ${snippet.snippetDescription}
                                                 </div>
-                                                
-                                            </div>
+                                            </a>
+                                            <ul class="list-inline tags">
+                                                <c:forEach var="tag" items="${snippet.tags}">
+                                                    <li><a href='<c:url value="/snippets/tag/${tag.slug}"></c:url>' class="tag">${tag.tagTitle}</a></li>
+                                                    </c:forEach>
+                                            </ul>
                                         </div>
+                                    </div> 
                                 </div>
                                 <!-- End Single Snippet Box -->
                             </c:forEach>

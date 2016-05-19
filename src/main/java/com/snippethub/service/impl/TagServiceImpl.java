@@ -32,8 +32,8 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void addTag(Tag user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addTag(Tag tag) {
+        repository.addTag(tag);
     }
 
     @Override

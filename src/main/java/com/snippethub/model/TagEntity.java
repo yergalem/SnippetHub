@@ -6,17 +6,14 @@
 package com.snippethub.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 /**
  *
  * @author tekeste
  */
 public class TagEntity implements Serializable {
-
+    private String tagTitle;
+    private String tagDescription;
+    
     public TagEntity(String tagTitle, String tagDescription) {
         this.tagTitle = tagTitle;
         this.tagDescription = tagDescription;
@@ -38,6 +35,4 @@ public class TagEntity implements Serializable {
     public void setTagDescription(String tagDescription) {
         this.tagDescription = tagDescription;
     }
-    private String tagTitle;
-    private String tagDescription;
 }

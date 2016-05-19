@@ -30,10 +30,18 @@ public class User implements Serializable {
 
     private String biography;
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     private String phone;
 
     private String profilePicture;
-
+    private int count;
     public User() {
     }
 

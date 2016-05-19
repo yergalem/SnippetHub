@@ -4,6 +4,7 @@ import com.snippethub.repository.UserRepository;
 import com.snippethub.model.User;
 import com.snippethub.service.SnippetService;
 import com.snippethub.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -76,5 +77,17 @@ public class UserServiceImpl implements UserService {
     }
     
     
-       
+       @Override
+    public List<User> getAllUsersWithCount() {
+        List<User> usersWithCounts = new ArrayList<>();
+        User temp;
+        int count = 0;
+        for (User user : this.getAllUsers()) {
+            count = snippetService.getSnippetListByFirstName(user.getSlug()).size();
+            temp = user;
+            temp.setCount(count);
+            usersWithCounts.add(temp);
+        }
+        return usersWithCounts;
+    }
 }

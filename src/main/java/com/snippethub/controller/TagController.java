@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
@@ -43,9 +44,9 @@ public class TagController {
     
     @RequestMapping(value="/savetags", method=RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void createTag(TagEntity tag) {
-        System.out.println(tag.getTagTitle());
-        System.out.println("herrrr");
+    @ResponseBody public void createTag(@RequestBody TagEntity tagEntity) {
+        Tag newTag = new Tag(tagEntity.getTagTitle(), tagEntity.getTagDescription());
+        tagService.addTag(newTag);
     }
     
 }

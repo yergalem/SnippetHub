@@ -30,7 +30,8 @@ public class UserController {
      */
     @RequestMapping("/users")
     public String users(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+//        model.addAttribute("users", userService.getAllUsers());
+          model.addAttribute("users", userService.getAllUsersWithCount());
         return "user/index";
     }
     

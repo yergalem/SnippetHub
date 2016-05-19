@@ -17,9 +17,9 @@
                         <div class="col-xs-6 col-sm-4">
                             <a href='<c:url value="/users/${user.slug}"></c:url>'>
                                 <div class="user-profile">
-                                    <img src='<c:url value="resources/images/profile.jpg" />' alt="Profile image" class="profile-img">
+                                    <img src='<c:url value="resources/images/profile.png" />' alt="Profile image" class="profile-img">
                                     <div class="user-info">
-                                        <h1>${user.fullName} <span class="count">90</span></h1>
+                                        <h1>${user.fullName} <span class="count">${user.count}</span></h1>
                                         <h2>${user.email}</h2>
                                         <p>
                                             ${user.biography}

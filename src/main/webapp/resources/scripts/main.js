@@ -5,12 +5,14 @@
  });
  $('#save-tag').on('click', function(e){
    e.preventDefault();
+   $('.loading').removeClass('hidden');
    //make ajax request to save to db
    var existing = [];
    if($tags.val() != null)
       existing = $tags.val();
    var newtag = $('#tag-name').val();
-   var tagDesc = $('#tag-desc').val();
+   if(newtag !== '') {
+       var tagDesc = $('#tag-desc').val();
    var $option = $('<option></option');
    $option.val(newtag);
    $option.text(newtag);
@@ -19,20 +21,24 @@
    //check if there was no selected tags first
    existing.push(newtag);
    $tags.val(existing).trigger('change');
+   }
     //close modal after saving
-    $('#addTag').modal('hide');
+    //$('#addTag').modal('hide');
    //make ajax request to save to db
-//   $.ajax({
-//       url: "http://localhost:8080/SnippetHub/tags/create",
-//       type: "POST",
-//        data: JSON.stringify({tagTitle: newtag, tagDescription:tagDesc}),
-//        contentType: "application/json; charset=utf-8",
-//        dataType: "json",
-//       success: function() {
-//           //close modal after saving
-//            $('#addTag').modal('hide');
-//       }
-//   });
+   $.ajax({
+       url: "http://localhost:8080/SnippetHub/savetags",
+       type: "POST",
+        data: JSON.stringify({tagTitle: newtag, tagDescription:tagDesc}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+       success: function() {
+           //close modal after saving
+           setTimeout(function(){
+                $('#addTag').modal('hide');
+                $('.loading').addClass('hidden');
+           },3000);
+       }
+   });
    
    
    $('#tag-name').val('');

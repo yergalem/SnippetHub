@@ -37,7 +37,7 @@
                                     </a>
                                     <ul class="list-inline tags">
                                         <c:forEach var="tag" items="${snippet.tags}">
-                                            <li><a href="" class="tag">${tag.tagTitle}</a></li>
+                                            <li><a href='<c:url value="/snippets/tag/${tag.slug}"></c:url>' class="tag">${tag.tagTitle}</a></li>
                                         </c:forEach>
                                     </ul>
                                 </div>
