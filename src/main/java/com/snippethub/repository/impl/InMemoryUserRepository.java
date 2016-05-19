@@ -22,14 +22,21 @@ public class InMemoryUserRepository implements UserRepository {
     public InMemoryUserRepository() {
         users = new HashMap<>();
         User user1 = new User("t@t.com","pass", "Rahel", "Kidanu");
+        User user2 = new User("tare@mum.com","pass", "Tare", "Sisay");
+        User user3 = new User("tek@mum.com","pass", "Tekeste", "Kidanu");
+        User user4 = new User("haf@mum.com","pass", "Haftom", "Tesfaye");
+         User user5 = new User("yerga@mum.com","pass", "Yergalem", "Gebretsadik");
         users.put(Long.MIN_VALUE, user1);
+        users.put(Long.MIN_VALUE +1, user2);
+        users.put(Long.MIN_VALUE +2, user3);
+        users.put(Long.MIN_VALUE +3, user4);
+        users.put(Long.MIN_VALUE+6, user5);
     }
 
     @Override
     public User getUserByID(long userID) {
      
        return users.get( userID );
-        
     }
 
     @Override
