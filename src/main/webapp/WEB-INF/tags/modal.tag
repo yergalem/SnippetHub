@@ -16,7 +16,7 @@
         <div class="modal-body">
           <form action="/tags/create" class="addTag">
             <input type="text" class="form-control" placeholder="Tag name" id="tag-name">
-            <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Tag details"></textarea>
+            <textarea name="" id="tag-desc" cols="30" rows="10" class="form-control" placeholder="Tag details"></textarea>
             <div class="modal-footer">
               <input type="submit" value="Save tag" class="btn btn-primary" id="save-tag">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

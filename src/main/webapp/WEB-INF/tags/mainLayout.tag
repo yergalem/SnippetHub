@@ -32,7 +32,6 @@
     <script src='<spring:url value="/resources/scripts/vendor.js"/>'></script>
     <script src='<spring:url value="/resources/scripts/plugins.js"/>'></script>
     <script src='<spring:url value="/resources/scripts/select2.full.min.js"/>'></script>
-    <script src='<spring:url value="/resources/scripts/codemirror.js"/>'></script>
     <script src='<spring:url value="/resources/scripts/main.js"/>'></script>
     <script src='<spring:url value="/resources/scripts/prism.js"/>'></script>
     </body>

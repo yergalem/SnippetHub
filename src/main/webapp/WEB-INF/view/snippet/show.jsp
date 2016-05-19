@@ -16,10 +16,10 @@
                     <div class="single-snippet paper">
                         <div class="heading">
                             <h2>${snippet.snippetTitle}</h2>
-                            <div class="actions">
+<!--                            <div class="actions">
                                 <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <a href="#" class="trash"><span class="glyphicon glyphicon-trash"></span></a>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="body">
                             <div class="code-snippet">

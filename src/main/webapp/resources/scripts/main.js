@@ -10,17 +10,31 @@
    if($tags.val() != null)
       existing = $tags.val();
    var newtag = $('#tag-name').val();
+   var tagDesc = $('#tag-desc').val();
    var $option = $('<option></option');
    $option.val(newtag);
    $option.text(newtag);
    $tags.append($option).trigger('change'); // add it to the list of selections
-
    //after adding the option let's make it one of the selected
    //check if there was no selected tags first
    existing.push(newtag);
    $tags.val(existing).trigger('change');
-   //close modal after saving
-   $('#addTag').modal('hide');
+    //close modal after saving
+    $('#addTag').modal('hide');
+   //make ajax request to save to db
+//   $.ajax({
+//       url: "http://localhost:8080/SnippetHub/tags/create",
+//       type: "POST",
+//        data: JSON.stringify({tagTitle: newtag, tagDescription:tagDesc}),
+//        contentType: "application/json; charset=utf-8",
+//        dataType: "json",
+//       success: function() {
+//           //close modal after saving
+//            $('#addTag').modal('hide');
+//       }
+//   });
+   
+   
    $('#tag-name').val('');
  });
 
@@ -66,9 +80,4 @@ var Search = {
 };
 (function(){
     Search.init();
-    var myTextarea = document.getElementById("codeEditor");
-//    console.log(myTextarea);
-//    var editor = CodeMirror.fromTextArea(myTextarea, {
-//        lineNumbers: true
-//    });
 })();
