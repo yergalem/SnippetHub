@@ -11,7 +11,6 @@
 <!DOCTYPE html>
 <t:mainLayout pageTitle="Register">
     <jsp:body>
-        <t:marketing></t:marketing>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">

@@ -11,13 +11,13 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Entity
 public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long userID;
     
     @NotEmpty(message = "{register.user.email}")
+    @Email(message = "{register.user.email}")
     private String email;
 
     @NotEmpty(message = "{register.user.password}")

@@ -11,10 +11,10 @@
 <!DOCTYPE html>
 <t:mainLayout pageTitle="Login">
     <jsp:body>
-        <t:marketing></t:marketing>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
+                    <div style="height: 90px;"></div>
                     <div class="login paper">
                         <div class="heading">
                             <h2>Login</h2>
