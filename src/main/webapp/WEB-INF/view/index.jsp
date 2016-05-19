@@ -16,6 +16,7 @@
                 <div class="container">
                     <div class="row snippets-row">
                     <c:forEach var="snippet" items="${snippets}">
+                    <c:if test='${snippet.visiblity.equals("public")}'>
                         <div class="col-xs-12 col-sm-6">
                             <div class="snippet-box">
                                 <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>
@@ -42,6 +43,7 @@
                                 </div>
                             </div>
                         </div>
+                    </c:if>
                     </c:forEach>
                 </div>
             </div>

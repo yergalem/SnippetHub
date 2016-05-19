@@ -22,6 +22,8 @@ public class UserController {
  
     @Autowired
     UserService userService;
+    @Autowired
+    SnippetService snippetService;
     /**
      * Display all users
      * @return 
@@ -35,10 +37,22 @@ public class UserController {
     /**
      * Display user profile
      */
-    @RequestMapping(value="/users/{firstName}", method=RequestMethod.GET)
-    public String getProfile(@PathVariable("firstName") String firstName, Model model) {
+    @RequestMapping(value = "/users/{firstName}", method = RequestMethod.GET)
+    public String getProfile(@PathVariable("firstName") String firstName, Model model, HttpServletRequest request) {
+        User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
+
+        String visiblity = "";
+        if (loggedInUser != null && loggedInUser.getSlug().equals(firstName)) {
+            visiblity = "all";
+        } else {
+            visiblity = "public";
+        }
+//        model.addAttribute("vis",snippetService.getSharedSnippetsByFirstName(firstName, visiblity).size());
+        model.addAttribute("userSnippets", snippetService.getSharedSnippetsByFirstName(firstName, visiblity));
         model.addAttribute("singleUser", userService.getUserByFirstName(firstName));
-        model.addAttribute("userSnippets",userService.getSnippetListByFirstName(firstName));
+//        model.addAttribute("userSnippets",userService.getSnippetListByFirstName(firstName));
+//        model.addAttribute("sharedSnippets",snippetService.getSharedSnippets() );
+        // model.addAttribute("snippetCount",snippetService.getSharedSnippets().c )
         return "user/show";
     }
     /**

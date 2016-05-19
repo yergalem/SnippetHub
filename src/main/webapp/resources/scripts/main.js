@@ -66,4 +66,9 @@ var Search = {
 };
 (function(){
     Search.init();
+    var myTextarea = document.getElementById("codeEditor");
+//    console.log(myTextarea);
+//    var editor = CodeMirror.fromTextArea(myTextarea, {
+//        lineNumbers: true
+//    });
 })();

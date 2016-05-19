@@ -89,4 +89,9 @@ public class SnippetServiceImpl implements SnippetService{
     public List<Snippet> getSnippetByTagTitle(String tagTitle) {
         return snippetRepository.getSnippetByTagTitle(tagTitle);
     }
+    
+        @Override
+    public List<Snippet> getSharedSnippetsByFirstName(String firstName, String visibility) {
+        return snippetRepository.getSharedSnippetsByFirstName(firstName, visibility);
+    }
 }

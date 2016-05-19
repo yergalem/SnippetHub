@@ -6,6 +6,7 @@
 package com.snippethub.controller;
 //import com.snippethub.dao.SnippetRepository;
 import com.snippethub.model.Snippet;
+import com.snippethub.model.User;
 import com.snippethub.service.SnippetService;
 import com.snippethub.service.TagService;
 import com.snippethub.service.impl.TagServiceImpl;
@@ -66,14 +67,15 @@ public class SnippetController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String processCreateSnippetForm(@ModelAttribute("newSnippet")@Valid Snippet snippetTobeAdded,
-            BindingResult result, Model model ) {
+            BindingResult result, Model model, HttpServletRequest request ) {
         if(result.hasErrors()) {
             model.addAttribute("allTags", tagService.getAllTags());
             model.addAttribute("languages", snippetSerrvice.getAllLaungauges());
             return "snippet/create";
         }
+        User user = (User) request.getSession().getAttribute("loggedInUser");
         snippetSerrvice.addSnippet(snippetTobeAdded);
-        return "redirect:/snippets";
+        return "redirect:/users/"+user.getSlug();
     }
     
     /**

@@ -24,4 +24,6 @@ public interface SnippetService {
     public List<Snippet> search(String searchTerm);
     public List<Snippet> getSnippetListByFirstName(String firstName);
     public List<Snippet> getSnippetByTagTitle(String tagTitle);
+    public List<Snippet> getSharedSnippetsByFirstName( String firstName, String visibility );     
+
 }

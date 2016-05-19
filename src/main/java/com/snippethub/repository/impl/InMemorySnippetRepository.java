@@ -93,4 +93,19 @@ public class InMemorySnippetRepository implements SnippetRepository {
         }
         return tagSnippetList;
     }
+        @Override
+    public List<Snippet> getSharedSnippetsByFirstName( String firstName, String visibility ){       
+        List<Snippet> userSnippetList= new ArrayList<>();
+        
+            for (Snippet snippet : listOfSnippet) {
+                if (snippet.getOwner().equals(firstName) ) 
+                     if( visibility.equals("all") ) {
+                           userSnippetList.add(snippet);
+                     } else if( snippet.getVisiblity().equals("public")){
+                           userSnippetList.add(snippet);
+                     }
+            } 
+                
+         return userSnippetList;
+    }
 }

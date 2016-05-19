@@ -21,4 +21,6 @@ public interface SnippetRepository {
     public Snippet getSnippetByTitle(String title);
     public List<Snippet> getSnippetListByFirstName(String firstName);
         public List<Snippet> getSnippetByTagTitle(String tagTitle);
+            public List<Snippet> getSharedSnippetsByFirstName( String firstName, String visibility );     
+
 }
