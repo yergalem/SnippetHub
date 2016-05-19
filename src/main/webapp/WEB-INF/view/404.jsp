@@ -15,7 +15,7 @@
                 404
             </h1>
             <h4>
-                Whatever you were looking for we hope you find it. But it is not here.
+                We hope you find what you were looking for. But it is not here :(
             </h4>
             <div style="height: 600px"></div>
         </div>
