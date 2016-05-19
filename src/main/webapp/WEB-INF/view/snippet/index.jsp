@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <c:forEach var="snippet" items="${snippets}">
-                    <c:if test='${snippet.visiblity.equals("public")}'>
+                    <c:if test='${snippet.visiblity.equals("public") || snippet.owner.equals(loggedInUser.slug)}'>
                         <div class="col-xs-12 col-sm-6">
                             <div class="snippet-box">
                                 <a href='<c:url value="/snippets/${snippet.slug}"></c:url>'>

@@ -24,6 +24,10 @@ body {
     bottom: 0;
     text-align: center;
 }
+a.tag {
+    margin-bottom: 7px;
+    display: inline-block;
+}
 form.trash{
     display: inline;
     color:red;
@@ -31,6 +35,17 @@ form.trash{
 button.trash{
     background:transparent;
     border:none;
+}
+.paper.notfound-page {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.paper.notfound-page h1 {
+    color: #00ace0;
+    font-size: 189px;
+    line-height: 516px;
+    margin-bottom: -165px;
 }
 article,
 aside,

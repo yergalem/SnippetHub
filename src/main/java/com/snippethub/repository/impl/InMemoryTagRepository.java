@@ -1,4 +1,3 @@
-
 package com.snippethub.repository.impl;
 
 import com.snippethub.repository.TagRepository;
@@ -14,26 +13,40 @@ import org.springframework.stereotype.Repository;
  * @author Yergalem
  */
 @Repository
-public class InMemoryTagRepository implements TagRepository{
-    
-     Map<String, Tag> tags;
-     List<Tag> listOfTags;
+public class InMemoryTagRepository implements TagRepository {
+
+    Map<String, Tag> tags;
+    List<Tag> listOfTags;
+
     public InMemoryTagRepository() {
         tags = new HashMap<>();
         listOfTags = new ArrayList<>();
         Tag tag1 = new Tag("javascript");
         Tag tag2 = new Tag("php");
         Tag tag3 = new Tag("java");
+        Tag validation = new Tag("validation");
+        Tag python = new Tag("python");
+        Tag converter = new Tag("convertor");
+        Tag binary = new Tag("binary");
+        Tag register = new Tag("register");
+
         listOfTags.add(tag1);
         listOfTags.add(tag2);
         listOfTags.add(tag3);
+        listOfTags.add(validation);
+        listOfTags.add(python);
+        listOfTags.add(converter);
+        listOfTags.add(binary);
+        listOfTags.add(register);
+        ;
+
     }
 
     @Override
     public Tag getTagByID(String tagID) {
-     
-       return tags.get( tagID );
-        
+
+        return tags.get(tagID);
+
     }
 
     @Override
@@ -43,19 +56,20 @@ public class InMemoryTagRepository implements TagRepository{
 
     @Override
     public void addTag(Tag tag) {
-        listOfTags.add( tag);
+        listOfTags.add(tag);
     }
 
     @Override
     public Tag getTag(String title) {
-        
-        for (Tag tag :  listOfTags ) {
-            
-            if(tag.getTagTitle().equals(title)) 
+
+        for (Tag tag : listOfTags) {
+
+            if (tag.getTagTitle().equals(title)) {
                 return tag;
+            }
         }
-        
-        throw new NullPointerException(InMemoryTagRepository.class.getSimpleName()+"No mathing Tags Found");
+
+        throw new NullPointerException(InMemoryTagRepository.class.getSimpleName() + "No mathing Tags Found");
     }
 
     @Override
@@ -67,6 +81,4 @@ public class InMemoryTagRepository implements TagRepository{
         return false;
     }
 
-    
-    
 }
