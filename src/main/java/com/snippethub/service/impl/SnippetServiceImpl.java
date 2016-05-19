@@ -8,6 +8,7 @@ package com.snippethub.service.impl;
 import com.snippethub.model.Language;
 import com.snippethub.repository.SnippetRepository;
 import com.snippethub.model.Snippet;
+import com.snippethub.repository.TagRepository;
 import com.snippethub.service.SnippetService;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,8 @@ public class SnippetServiceImpl implements SnippetService{
     
     @Autowired
     SnippetRepository snippetRepository;
-    
+    @Autowired
+    TagRepository tagRepository;
     @Override
     public List<Snippet> getAllSnippets() {
         return snippetRepository.getAllSnippets();
@@ -81,5 +83,10 @@ public class SnippetServiceImpl implements SnippetService{
     @Override
     public List<Snippet> getSnippetListByFirstName(String firstName) {
         return snippetRepository.getSnippetListByFirstName(firstName);
+    }
+
+    @Override
+    public List<Snippet> getSnippetByTagTitle(String tagTitle) {
+        return snippetRepository.getSnippetByTagTitle(tagTitle);
     }
 }

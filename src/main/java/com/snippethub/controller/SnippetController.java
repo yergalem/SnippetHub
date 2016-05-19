@@ -99,4 +99,10 @@ public class SnippetController {
             return "snippet/searchResult";
     }
     
+    @RequestMapping(value = "/tag/{title}")
+    public String getSnippetByTag(@PathVariable("title") String tagTitle, Model model) {
+        model.addAttribute("snippets", snippetSerrvice.getSnippetByTagTitle(tagTitle));
+        return "snippet/index";
+    }
+    
 }

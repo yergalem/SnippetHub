@@ -6,22 +6,25 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <t:mainLayout pageTitle="Tags | SnippetHub">
     <jsp:body>
         <div class="snippets-container">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="tag-container">
-                            <div class="tag-info">
-                                <h1>Javascript <span class="count">90</span></h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quis corporis, aperiam nulla et repudiandae ipsam numquam aut delectus dignissimos cupiditate iste perferendis vitae repellendus, facilis nihil minus. Nihil, totam.
-                                </p>
+                    <c:forEach var="tag" items="${tags}">                  
+                        <div class="col-xs-6 col-sm-4">
+                            <div class="tag-container">
+                                <div class="tag-info">
+                                    <a href='<c:url value="/snippets/tag/${tag.tagTitle}"></c:url>'>
+                                        <h1>${tag.tagTitle}<span class="count">${tag.count}</span></h1>
+                                    </a>
+                                    <p>${tag.tagDescription}</p>                                       
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

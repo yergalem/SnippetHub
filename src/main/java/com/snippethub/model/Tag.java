@@ -17,22 +17,22 @@ public class Tag {
     }
 
     public Tag( String tagTitle, String tagDescription ) {
-        
         this.tagTitle = tagTitle;
         this.tagDescription = tagDescription;
         this.createDate = LocalDate.now();
+        this.count = 0;
     }
     
 
     /**
      *
      */
-    public String tagID;
-
+    private String tagID;
+    private int count;
     /**
      *
      */
-    public String tagTitle;
+    private String tagTitle;
 
     /**
      *
@@ -101,6 +101,13 @@ public class Tag {
     }
     public String getSlug() {
         return Util.getSlug(this.tagTitle);
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+    public int getCount() {
+        return count;
     }
     
     

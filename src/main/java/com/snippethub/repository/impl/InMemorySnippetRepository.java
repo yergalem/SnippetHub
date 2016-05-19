@@ -74,4 +74,23 @@ public class InMemorySnippetRepository implements SnippetRepository {
         }
         return userSnippetList;
     }
+    @Override
+    public List<Snippet> getSnippetByTagTitle(String tagTitle) {
+        List<Snippet> tagSnippetList = new ArrayList<>();
+        for (Snippet snippet : listOfSnippet) {
+
+            List<Tag> tg = snippet.getTags();
+            int counter = 0;
+            for (Tag tt : tg) {
+                if (tt.getTagTitle().equals(tagTitle)) {
+                    counter = 1;
+                }
+            }
+
+            if (counter == 1) {
+                tagSnippetList.add(snippet);
+            }
+        }
+        return tagSnippetList;
+    }
 }
