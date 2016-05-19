@@ -13,14 +13,23 @@ import java.util.List;
  * @author tareman
  */
 public interface SnippetRepository {
+
     List<Snippet> getAllSnippets();
+
     Snippet getSnippetById(long snippetID);
+
     void addSnippet(Snippet snippet);
-   // void initRepository();
+    // void initRepository();
 
     public Snippet getSnippetByTitle(String title);
+
     public List<Snippet> getSnippetListByFirstName(String firstName);
-        public List<Snippet> getSnippetByTagTitle(String tagTitle);
-            public List<Snippet> getSharedSnippetsByFirstName( String firstName, String visibility );     
+
+    public List<Snippet> getSnippetByTagTitle(String tagTitle);
+
+    public List<Snippet> getSharedSnippetsByFirstName(String firstName, String visibility);
+
+    public void deleteSnippet(String slug);
+    public void editSnippet( Snippet snippet);
 
 }

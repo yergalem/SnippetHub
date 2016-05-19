@@ -158,4 +158,30 @@ public class InMemorySnippetRepository implements SnippetRepository {
                 
          return userSnippetList;
     }
+
+    @Override
+    public void deleteSnippet(String slug) {
+        for(Snippet snippet : listOfSnippet) {
+            if(snippet.getSlug().equals(slug)) {
+                listOfSnippet.remove(snippet);
+                break;
+            }
+        }
+    }
+    @Override
+    public void editSnippet(Snippet snippet) {
+
+        for (Snippet existing : listOfSnippet) {
+            if (existing.getSlug().equals(snippet.getSlug())) {
+
+                existing.setContent(snippet.getContent());
+                existing.setSnippetTitle(snippet.getSnippetTitle());
+                existing.setVisiblity(snippet.getVisiblity());
+                existing.setLanguage(snippet.getLanguage());
+                existing.setTags(snippet.getTags());
+                existing.setSnippetDescription(snippet.getSnippetDescription());
+            }
+        }
+
+    }
 }

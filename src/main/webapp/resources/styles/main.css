@@ -24,6 +24,14 @@ body {
     bottom: 0;
     text-align: center;
 }
+form.trash{
+    display: inline;
+    color:red;
+}
+button.trash{
+    background:transparent;
+    border:none;
+}
 article,
 aside,
 details,

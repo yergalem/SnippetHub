@@ -25,5 +25,6 @@ public interface SnippetService {
     public List<Snippet> getSnippetListByFirstName(String firstName);
     public List<Snippet> getSnippetByTagTitle(String tagTitle);
     public List<Snippet> getSharedSnippetsByFirstName( String firstName, String visibility );     
-
+    public void editSnippet( Snippet snippet);
+    public void deleteSnippet(String slug);
 }

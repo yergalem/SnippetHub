@@ -5,10 +5,14 @@
  */
 package com.snippethub.controller;
 //import com.snippethub.dao.SnippetRepository;
+import com.snippethub.model.Language;
 import com.snippethub.model.Snippet;
+import com.snippethub.model.Tag;
 import com.snippethub.model.User;
 import com.snippethub.service.SnippetService;
 import com.snippethub.service.TagService;
+import com.snippethub.service.UserService;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,6 +37,8 @@ public class SnippetController {
     private SnippetService snippetSerrvice;
     @Autowired
     private TagService tagService;
+    @Autowired
+    private UserService userService;
     @RequestMapping //annotation is necesssary for default one too.
     public String getAllSnippets(Model model) {
         model.addAttribute("snippets", snippetSerrvice.getAllSnippets());
@@ -76,11 +82,40 @@ public class SnippetController {
      * @param model
      * @return 
      */
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String getEditSnippetForm(@PathVariable("id") long snippetId, Model model) {
-        Snippet newSnippet = new Snippet();
-        model.addAttribute("newSnippet", newSnippet);
+    @RequestMapping(value = "/edit/{slug}", method = RequestMethod.GET)
+    public String getEditSnippetForm(@PathVariable("slug") String snippetSlug, Model model, HttpServletRequest request) {
+        User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
+        if(loggedInUser == null)
+            return "redirect:/login";
+        
+        Snippet snippetForEdit = snippetSerrvice.getSnippetByTitle(snippetSlug);
+
+        //model.addAttribute("allTags", tagService.getAllTags());
+        List<String> langs = new ArrayList<>();
+        for (Language lang : snippetSerrvice.getAllLaungauges()) {
+            langs.add(lang.getLanguageName());
+        }
+
+        List<String> tags = new ArrayList<>();
+        for (Tag tag : tagService.getAllTags()) {
+            tags.add(tag.getTagTitle());
+        }
+        model.addAttribute("languages", langs);
+        model.addAttribute("allTags", tags);
+        model.addAttribute("editSnippet", snippetForEdit);
         return "snippet/edit";
+    }
+    
+        
+     @RequestMapping(value = "/edit/{slug}", method = RequestMethod.POST )
+    public String editSnippet( @ModelAttribute("editSnippet") @Valid Snippet snippetToBeEdited, BindingResult result ) {
+        
+        if(result.hasErrors()) {
+            
+            return "snippet/edit";
+        }
+        snippetSerrvice.editSnippet(snippetToBeEdited);
+        return "redirect:/snippets";
     }
     
     @RequestMapping(value="/search/{searchTerm}", method = RequestMethod.GET)
@@ -98,6 +133,13 @@ public class SnippetController {
     public String getSnippetByTag(@PathVariable("title") String tagTitle, Model model) {
         model.addAttribute("snippets", snippetSerrvice.getSnippetByTagTitle(tagTitle));
         return "snippet/index";
+    }
+    
+    @RequestMapping(value="/delete/{slug}",  method=RequestMethod.POST)
+    public String deleteSnippet(@PathVariable("slug") String slug, HttpServletRequest request) {
+        User loggedInUser = (User) request.getSession().getAttribute("loggedInUser");
+        snippetSerrvice.deleteSnippet(slug);
+        return "redirect:/users/"+loggedInUser.getSlug();
     }
     
 }

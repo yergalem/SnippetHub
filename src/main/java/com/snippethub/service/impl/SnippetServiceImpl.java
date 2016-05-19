@@ -94,4 +94,15 @@ public class SnippetServiceImpl implements SnippetService{
     public List<Snippet> getSharedSnippetsByFirstName(String firstName, String visibility) {
         return snippetRepository.getSharedSnippetsByFirstName(firstName, visibility);
     }
+
+    @Override
+    public void deleteSnippet(String slug) {
+        snippetRepository.deleteSnippet(slug);
+    }
+    
+    @Override
+    public void editSnippet(Snippet snippet) {
+
+        snippetRepository.editSnippet(snippet);
+    }
 }
